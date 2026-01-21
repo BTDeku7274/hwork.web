@@ -21,9 +21,11 @@
 
     /* ---------- HEADER & NAV ---------- */
     header {
+      position: relative;
       background: radial-gradient(circle at top left, var(--accent), var(--primary));
       color: #fff;
       padding: 1.2rem 6% 2rem;
+      overflow: visible;
     }
     .nav-bar {
       display: flex;
@@ -55,29 +57,30 @@
       opacity: 0.85;
     }
 
-    /* desktop nav */
-    nav ul {
+    /* nav desktop */
+    .nav-menu-desktop ul {
       list-style: none;
       display: flex;
       gap: 1.2rem;
       flex-wrap: wrap;
     }
-    nav a {
+    .nav-menu-desktop a {
       color: #fff;
       text-decoration: none;
       font-size: 0.9rem;
       font-weight: 500;
     }
-    nav a:hover { text-decoration: underline; }
+    .nav-menu-desktop a:hover { text-decoration: underline; }
 
-    /* burger button (mobile) */
+    /* burger animé (mobile) */
     .nav-toggle {
       display: none;
       border: none;
-      background: transparent;
-      color: #fff;
+      background: rgba(15,23,42,0.12);
+      border-radius: 999px;
+      padding: 0.45rem 0.55rem;
       cursor: pointer;
-      padding: 0.4rem;
+      -webkit-tap-highlight-color: transparent;
     }
     .nav-toggle span {
       display: block;
@@ -86,11 +89,55 @@
       background: #fff;
       margin: 4px 0;
       border-radius: 999px;
+      transition: transform 0.25s ease, opacity 0.2s ease, width 0.2s ease;
+    }
+    .nav-toggle.open span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    .nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+      width: 0;
+    }
+    .nav-toggle.open span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
     }
 
-    /* mobile menu */
-    .nav-menu {
+    /* drawer mobile */
+    .nav-drawer {
+      position: absolute;
+      inset-inline: 6%;
+      top: 72px;
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 18px 45px rgba(15,23,42,0.35);
+      padding: 0.8rem 1rem;
+      transform: translateY(-20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 20;
+    }
+    .nav-drawer ul {
+      list-style: none;
       display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .nav-drawer a {
+      display: block;
+      padding: 0.55rem 0.4rem;
+      border-radius: 0.7rem;
+      color: var(--dark);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .nav-drawer a:hover {
+      background: rgba(79,70,229,0.06);
+    }
+    .nav-drawer.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
     }
 
     /* ---------- HERO ---------- */
@@ -208,25 +255,10 @@
     }
     footer a { color: var(--primary); text-decoration: none; }
 
-    /* ---------- MOBILE FIRST ADAPTATIONS ---------- */
+    /* ---------- MOBILE ADAPTATIONS ---------- */
     @media (max-width: 768px) {
-      /* nav : burger */
-      .nav-menu {
-        display: none;
-        width: 100%;
-      }
-      .nav-menu.open {
-        display: block;
-        margin-top: 0.6rem;
-      }
-      .nav-menu ul {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-      .nav-toggle {
-        display: block;
-      }
+      .nav-menu-desktop { display: none; }
+      .nav-toggle { display: block; }
 
       .hero {
         grid-template-columns: 1fr;
@@ -264,20 +296,16 @@
     <div class="nav-bar">
       <!-- Logo -->
       <div class="logo-wrap">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCAlWTRqx_rItq2uPUMcdfAJgnP1WI0B6cGA&s" alt="e‑NABLE logo: Giving the World a Helping Hand" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCAlWTRqx_rItq2uPUMcdfAJgnP1WI0B6cGA&s"
+             alt="e‑NABLE logo: Giving the World a Helping Hand" />
         <div>
           <div class="logo-text-main">e‑NABLE</div>
           <div class="logo-text-sub">Giving the World a Helping Hand</div>
         </div>
       </div>
 
-      <!-- Bouton burger -->
-      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-menu').classList.toggle('open')">
-        <span></span><span></span><span></span>
-      </button>
-
-      <!-- Menu -->
-      <nav class="nav-menu">
+      <!-- Menu desktop -->
+      <nav class="nav-menu-desktop">
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#story">Our story</a></li>
@@ -286,7 +314,23 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+
+      <!-- Bouton burger (mobile) -->
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+
+    <!-- Drawer mobile -->
+    <nav class="nav-drawer">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#story">Our story</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#get-involved">Get involved</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
     <div class="hero">
       <div>
@@ -410,5 +454,22 @@
       <a href="https://enablingthefuture.org" target="_blank" rel="noopener">enablingthefuture.org</a>.
     </span>
   </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const drawer = document.querySelector('.nav-drawer');
+
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      drawer.classList.toggle('open');
+    });
+
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.classList.remove('open');
+        drawer.classList.remove('open');
+      });
+    });
+  </script>
 </body>
 </html>
