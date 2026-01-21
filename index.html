@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>e‑NABLE – 3D Printed Hero Hands for Kids</title>
+  <title>e‑NABLE – Giving the World a Helping Hand</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
@@ -21,58 +21,78 @@
     header {
       background: radial-gradient(circle at top left, var(--accent), var(--primary));
       color: #fff;
-      padding: 2.5rem 8%;
+      padding: 1.6rem 8% 2.4rem;
     }
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 2rem;
+      gap: 1.5rem;
+      margin-bottom: 1.6rem;
     }
-    nav .logo {
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .logo-wrap img {
+      height: 52px;
+      width: 52px;
+      border-radius: 999px;
+      background: #fff;
+      object-fit: contain;
+    }
+    .logo-text-main {
       font-weight: 800;
       letter-spacing: 0.08em;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       text-transform: uppercase;
+    }
+    .logo-text-sub {
+      font-size: 0.75rem;
+      opacity: 0.85;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
     }
     nav a {
       color: #fff;
       text-decoration: none;
-      margin-left: 1.5rem;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
+    }
+    nav a:hover {
+      text-decoration: underline;
     }
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 2.5rem;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.2rem;
       align-items: center;
     }
     .hero h1 {
-      font-size: clamp(2.4rem, 4vw, 3.2rem);
-      margin-bottom: 1rem;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      margin-bottom: 0.7rem;
     }
     .hero p {
       max-width: 34rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
     }
     .hero-buttons a {
       display: inline-block;
-      padding: 0.8rem 1.6rem;
+      padding: 0.75rem 1.5rem;
       border-radius: 999px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       margin-right: 0.8rem;
     }
-    .btn-primary {
-      background: #fff;
-      color: var(--primary);
-    }
-    .btn-outline {
-      border: 1px solid rgba(255,255,255,0.7);
-      color: #fff;
-    }
+    .btn-primary { background: #fff; color: var(--primary); }
+    .btn-outline { border: 1px solid rgba(255,255,255,0.7); color: #fff; }
+
     .hero-visual {
       display: flex;
       flex-direction: column;
@@ -84,12 +104,11 @@
       box-shadow: 0 18px 45px rgba(0,0,0,0.18);
       object-fit: cover;
     }
+
     main { padding: 3rem 8% 4rem; }
     section { margin-bottom: 3rem; }
-    h2 {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-    }
+    h2 { font-size: 1.6rem; margin-bottom: 1rem; }
+
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -110,10 +129,7 @@
       object-fit: cover;
       max-height: 160px;
     }
-    .card h3 {
-      margin-bottom: 0.1rem;
-      font-size: 1.1rem;
-    }
+    .card h3 { margin-bottom: 0.1rem; font-size: 1.1rem; }
     .badge {
       display: inline-block;
       padding: 0.2rem 0.65rem;
@@ -125,6 +141,7 @@
       letter-spacing: 0.08em;
       font-weight: 600;
     }
+
     .cta {
       background: linear-gradient(90deg, var(--primary), var(--accent));
       color: #fff;
@@ -144,6 +161,7 @@
       object-fit: cover;
       box-shadow: 0 12px 30px rgba(15,23,42,0.35);
     }
+
     footer {
       padding: 1.6rem 8%;
       border-top: 1px solid rgba(148,163,184,0.4);
@@ -154,42 +172,48 @@
       justify-content: space-between;
       gap: 0.8rem;
     }
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
-    }
+    footer a { color: var(--primary); text-decoration: none; }
+
     @media (max-width: 840px) {
-      header { padding: 1.8rem 6%; }
-      nav { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+      header { padding: 1.4rem 6% 2.2rem; }
+      nav { flex-direction: column; align-items: flex-start; }
       .hero { grid-template-columns: 1fr; }
       main { padding: 2.4rem 6% 3.2rem; }
       .grid-3 { grid-template-columns: 1fr; }
       .hero-visual { order: -1; }
-      .cta {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .cta { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <div class="logo">e‑NABLE</div>
-      <div>
-        <a href="#about">About</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="#get-involved">Get involved</a>
-        <a href="#contact">Contact</a>
+      <!-- Logo à la place du titre -->
+      <div class="logo-wrap">
+        <!-- Mets ton fichier logo à la place de logo-enable.png -->
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCAlWTRqx_rItq2uPUMcdfAJgnP1WI0B6cGA&s" alt="e‑NABLE logo: Giving the World a Helping Hand" />
+        <div>
+          <div class="logo-text-main">e‑NABLE</div>
+          <div class="logo-text-sub">Giving the World a Helping Hand</div>
+        </div>
       </div>
+
+      <!-- Nouvelle navigation plus claire -->
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#story">Our story</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#get-involved">Get involved</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
 
     <div class="hero">
       <div>
         <h1>Helping kids with 3D‑printed hero hands</h1>
         <p>
-          e‑NABLE is a global network of volunteers who design and 3D‑print prosthetic hands and arms
-          for children in need, at little or no cost to families.
+          e‑NABLE brings together volunteers, 3D printers and open‑source designs to create playful prosthetic
+          hands and arms for children at little or no cost.
         </p>
         <div class="hero-buttons">
           <a href="#get-involved" class="btn-primary">Become a volunteer maker</a>
@@ -197,60 +221,75 @@
         </div>
       </div>
 
-      <!-- Hero images en ligne -->
       <div class="hero-visual">
-        <img src="https://spectrum.ieee.org/media-library/close-up-of-quorum-s-3d-printed-prostheses-socket.jpg?id=62149737&width=1000&quality=85?auto=compress&cs=tinysrgb&w=900"
+        <img src="https://spectrum.ieee.org/media-library/close-up-of-quorum-s-3d-printed-prostheses-socket.jpg?id=62149737&width=1000&quality=85"
              alt="Child wearing a colorful 3D‑printed arm" />
-        <img src="https://images.fastcompany.com/image/upload/wp-cms/uploads/2020/08/i-2-90535260-this-nonprofit-3d-prints-custom-bionic-arms-for-kids-with-limb-differences-457x457.jpg?auto=compress&cs=tinysrgb&w=900"
-             alt="Colorful 3D‑printed parts on a table" />
+        <img src="https://images.fastcompany.com/image/upload/wp-cms/uploads/2020/08/i-2-90535260-this-nonprofit-3d-prints-custom-bionic-arms-for-kids-with-limb-differences-457x457.jpg"
+             alt="Colorful 3D‑printed prosthetic parts on a table" />
       </div>
     </div>
   </header>
 
   <main>
     <section id="about">
-      <h2>What is e‑NABLE?</h2>
+      <h2>About e‑NABLE</h2>
       <p>
-        e‑NABLE is a volunteer community that shares open‑source designs for 3D‑printed prosthetic hands and arms
-        and connects makers with children and adults who can benefit from these devices.
+        e‑NABLE is a worldwide volunteer community that designs and 3D‑prints low‑cost prosthetic hands and arms
+        using open‑source files that anyone can download and improve.
       </p>
       <p>
-        Thousands of volunteers around the world donate their time, creativity and access to 3D printers to make
-        functional, low‑cost assistive devices for people who might not otherwise be able to afford them.
+        Makers, teachers, students and families collaborate to turn a medical device into something fun, colorful
+        and empowering for children living with limb differences.
+      </p>
+    </section>
+
+    <section id="story">
+      <h2>Our story</h2>
+      <p>
+        The e‑NABLE adventure started when a maker shared an experimental mechanical hand online and was contacted
+        by a carpenter in need of a prosthesis. Together they built an early 3D‑printed hand.
+      </p>
+      <p>
+        Instead of keeping the design private, they posted the files for free so others could print, remix and
+        improve them, inspiring a researcher to form an online group that matched volunteers with recipients.
+      </p>
+      <p>
+        What began as a handful of makers has grown into a global network donating thousands of devices and proving
+        how open‑source hardware and community spirit can change lives.
       </p>
     </section>
 
     <section id="how-it-works">
-      <h2>How e‑NABLE helps families</h2>
+      <h2>How it works</h2>
       <div class="grid-3">
         <div class="card">
           <div class="badge">Step 1</div>
-          <img src="https://info.lenord.fr/upload/images/prothese_de_main_elisa_banaszyk_vicq_lampla_3-5dc1545c55dac.jpeg?auto=compress&cs=tinysrgb&w=800"
+          <img src="https://info.lenord.fr/upload/images/prothese_de_main_elisa_banaszyk_vicq_lampla_3-5dc1545c55dac.jpeg"
                alt="Family talking with a volunteer" />
           <h3>Share your story</h3>
           <p>
-            Families reach out to an e‑NABLE chapter, explain their needs and send simple measurements and photos,
-            so volunteers can choose the right design.
+            Families contact a local e‑NABLE group, explain their needs and send a few photos and measurements so
+            volunteers can select and size the right design.
           </p>
         </div>
         <div class="card">
           <div class="badge">Step 2</div>
-          <img src="https://www.makershop.fr/blog/wp-content/uploads/2023/09/dd.png?auto=compress&cs=tinysrgb&w=800"
+          <img src="https://www.makershop.fr/blog/wp-content/uploads/2023/09/dd.png"
                alt="3D printer creating plastic parts" />
           <h3>Print and assemble</h3>
           <p>
-            Makers 3D‑print the parts on desktop printers, add screws, cords and padding, and build a custom device
-            in bright colors the child chooses.
+            Makers 3D‑print the parts, add simple hardware and padding, and customize colors and themes to match
+            the child’s personality.
           </p>
         </div>
         <div class="card">
           <div class="badge">Step 3</div>
-          <img src="https://cdn-s-www.estrepublicain.fr/images/B8A8882D-DBD0-40A7-9868-68A7362734AF/NW_raw/l-equipe-du-numerifab-de-bras-sur-meuse-a-fabrique-une-prothese-a-teo-avec-une-imprimante-3d-il-peut-desormais-jouer-les-superheros-photo-franck-lallemand-1507658146.jpg?auto=compress&cs=tinysrgb&w=800"
-               alt="Child playing with a ball" />
+          <img src="https://cdn-s-www.estrepublicain.fr/images/B8A8882D-DBD0-40A7-9868-68A7362734AF/NW_raw/l-equipe-du-numerifab-de-bras-sur-meuse-a-fabrique-une-prothese-a-teo-avec-une-imprimante-3d-il-peut-desormais-jouer-les-superheros-photo-franck-lallemand-1507658146.jpg"
+               alt="Child playing with superhero‑style prosthetic arm" />
           <h3>Fit and play</h3>
           <p>
-            The child tries the new hand, learns how to open and close the fingers, and uses it for everyday activities
-            like holding toys, riding a bike or playing games.
+            The child tries the new hand, learns to open and close the fingers, and uses it for everyday activities,
+            from holding toys to playing sports.
           </p>
         </div>
       </div>
@@ -259,39 +298,34 @@
     <section id="get-involved">
       <div class="cta">
         <div>
-          <h2>Join the e‑NABLE movement</h2>
+          <h2>Get involved with e‑NABLE</h2>
           <p>
-            Whether you are a student, teacher, engineer or hobbyist, you can help by printing parts, assembling devices,
-            organizing build events or supporting a local e‑NABLE chapter.
-          </p>
-          <p style="font-size:0.9rem; margin-bottom:0.4rem;">
-            Ways to support e‑NABLE:
+            You don’t need to be an engineer to help. If you have access to a 3D printer or want to support a local
+            chapter, there is a place for you in the e‑NABLE community.
           </p>
           <ul style="font-size:0.9rem; list-style: disc; padding-left:1.2rem;">
-            <li>Use your 3D printer to build hands and arms for recipients.</li>
-            <li>Host workshops at schools or makerspaces to spread the word.</li>
-            <li>Donate materials or funds to help cover printing costs.</li>
+            <li>Print and assemble devices using shared open‑source files.</li>
+            <li>Organize school or makerspace build events.</li>
+            <li>Sponsor materials or shipping for a child’s device.</li>
           </ul>
         </div>
-
-        <!-- Photo pour la section CTA -->
-        <img src="https://www.makerbot.com/wp-content/uploads/2025/03/Sprint-printer.png?auto=compress&cs=tinysrgb&w=1200"
-             alt="Group of volunteers working together" />
+        <img src="https://www.makerbot.com/wp-content/uploads/2025/03/Sprint-printer.png"
+             alt="Volunteers working around 3D printers" />
       </div>
     </section>
 
     <section id="contact">
       <h2>Contact the real e‑NABLE</h2>
       <p>
-        This is a demo page created to promote the real e‑NABLE community. To get involved, request a device
-        or find resources, visit the official e‑NABLE site:
+        This demo page was created for educational purposes to promote the real e‑NABLE community.
+        To request a device, volunteer or learn more, visit:
         <a href="https://enablingthefuture.org" target="_blank" rel="noopener">enablingthefuture.org</a>.
       </p>
     </section>
   </main>
 
   <footer>
-    <span>© 2026 e‑NABLE (promo demo page).</span>
+    <span>© 2026 e‑NABLE (demo page).</span>
     <span>Learn more and join the global volunteer network at
       <a href="https://enablingthefuture.org" target="_blank" rel="noopener">enablingthefuture.org</a>.
     </span>
